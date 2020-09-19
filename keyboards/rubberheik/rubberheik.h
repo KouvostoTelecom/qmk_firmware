@@ -18,6 +18,8 @@
 
 #include "quantum.h"
 
+#define ___ KC_NO
+
 /* This is a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
@@ -26,7 +28,8 @@
  * The second converts the arguments into a two-dimensional array which
  * represents the switch matrix.
  */
-#define LAYOUT( k00, k01) { \
-    { k00 }, 	\
-    { k01 }	\
+#define LAYOUT( k00, k01, k02, k03, k04, k05, k06, k07 ) { \
+    { ___, k00, ___, ___, k01, ___ }, 	\
+    { k02, ___, k03, k04, ___, k05 }, 	\
+    { ___, k06, ___, ___, k07, ___ } \
 }

@@ -27,10 +27,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT      RubberHeikki🍆
 
 /* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 1
+#define MATRIX_ROWS 3
+#define MATRIX_COLS 6
 // #define DIRECT_PINS { {B1} }
-#define DIRECT_PINS { {B3}, {B1}, {B13}, {B14} }
+#define DIRECT_PINS { \
+	{NO_PIN, B2, NO_PIN, NO_PIN, B1, NO_PIN}, \
+	{B11, NO_PIN, B13, B3, NO_PIN, B14}, \
+	{NO_PIN, B12, NO_PIN, NO_PIN, C13, NO_PIN} \
+}
 /*
  * Keyboard Matrix Assignments
  *
