@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 1
 // #define DIRECT_PINS { {B1} }
-#define DIRECT_PINS { {B1}, {B3}, {B13}, {B14} }
+#define DIRECT_PINS { {B3}, {B1}, {B13}, {B14} }
 /*
  * Keyboard Matrix Assignments
  *

@@ -15,13 +15,8 @@
  */
 #include QMK_KEYBOARD_H
 
-// Defines names for use in layer keycodes and the keymap
-//enum layer_names {
-//    _BASE
-//};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-	KC_0	
+	KC_0, KC_1
    )
 };
