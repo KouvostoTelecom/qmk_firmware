@@ -1,10 +1,19 @@
 # rubberheik
 
+Clone the repository and submodules
+
+    git clone [url]
+    git submodule update --init --recursive
+
 Make example for this keyboard (after setting up your build environment):
 
     make rubberheik:default
 
 `default` refers to the keymap, that can be found from the `keymap` folder
+
+Or if you are using `qmk` cli wrapper
+
+    QMK_HOME='~/' qmk compile --keyboard rubberheik --keymap default
 
 Flashing example for this keyboard:
 
