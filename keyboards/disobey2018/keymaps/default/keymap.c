@@ -26,9 +26,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    )
 };
 
+xprintf("heikki")
 #ifdef OLED_DRIVER_ENABLE
 void oled_task_user(void) {
-  print("string")
+  xprintf("🍆")
   oled_write_P(PSTR("RUB HEIKKI\n"), false);
 }
 #endif
