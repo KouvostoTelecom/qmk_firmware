@@ -19,6 +19,7 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 
 OLED_DRIVER_ENABLE = yes
+OLED_DISPLAY_128X64 = yes
 
 ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
 	SRC += oled_utils.c
