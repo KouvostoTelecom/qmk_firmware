@@ -26,15 +26,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    )
 };
 
-xprintf("heikki")
 #ifdef OLED_DRIVER_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  return OLED_ROTATION_0;
+}
+
 void oled_task_user(void) {
-  xprintf("🍆")
+  xprintf("🍆");
   oled_write_P(PSTR("RUB HEIKKI\n"), false);
 }
 #endif
 
 void keyboard_post_init_user(void) {
+  wait_ms(2000);
+  xprintf("heikki");
   // Customise these values to desired behaviour
   debug_enable=true;
   debug_matrix=true;
