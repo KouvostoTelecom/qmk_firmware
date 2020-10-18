@@ -23,6 +23,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	      KC_0,             KC_1, 
 	KC_2,       KC_3, KC_4,       KC_5,
 	      KC_6,             KC_7
+   ),
+   [1] = LAYOUT(
+	      KC_U,             KC_X, 
+	KC_L,       KC_R, KC_Y,       KC_A,
+	      KC_D,             KC_B
+   ),
+   [2] = LAYOUT(
+	      KC_A,             KC_B, 
+	KC_C,       KC_D, KC_E,       KC_F,
+	      KC_G,             KC_H
+   ),
    )
 };
 
@@ -63,8 +74,18 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  if(layer_state_is(0)){oled_write_P(PSTR("Layer0: On\n"), false);};
-  if(layer_state_is(1)){oled_write_P(PSTR("Layer1: On\n"), false);};
-  if(layer_state_is(2)){oled_write_P(PSTR("Layer2: On\n"), false);};
+  switch (get_highest_layer(state)) {
+    case 0:
+      oled_write_P(PSTR("Layer: 0\n"), false);
+      break;
+    case 1:
+      oled_write_P(PSTR("Layer: 1\n"), false);
+      break;
+    case 2:
+      oled_write_P(PSTR("Layer: 2\n"), false);
+      break;
+    default:
+      oled_write_P(PSTR("Layer: Unknown\n"), false);
+  }
   return state;
 }
