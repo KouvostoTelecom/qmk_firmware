@@ -68,6 +68,8 @@ void render_normal_state(void) {
     default:
       oled_write_P(PSTR("Layer: Unknown\n"), false);
   }
+  oled_write_P(PSTR("\n"), false);
+  oled_write_P(PSTR("\n"), false);
 }
 
 static uint16_t key_timer_from_boot;
@@ -75,7 +77,7 @@ static bool boot_logo_shown = false;
 
 void oled_task_user(void) {
   if(timer_elapsed(key_timer_from_boot) < 3000 && !boot_logo_shown) {
-    render_qmk_logo();
+    render_kt_logo();
   } else  {
     boot_logo_shown = true;
     render_normal_state();
