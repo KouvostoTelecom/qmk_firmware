@@ -152,3 +152,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define I2C1_SDA 9
 #define I2C1_SCL_PAL_MODE 1
 #define I2C1_SDA_PAL_MODE 1
+#define ENCODERS_PAD_A { B4 }
+#define ENCODERS_PAD_B { A2 }
+#define ENCODER_RESOLUTION 2

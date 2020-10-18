@@ -34,7 +34,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 void oled_task_user(void) {
   xprintf("🍆");
   oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
-  oled_write_P(PSTR("\nHave you considered\ntrying HARDER?"), false);
+  oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
 }
 #endif
 
@@ -46,4 +46,25 @@ void keyboard_post_init_user(void) {
   debug_matrix=true;
   //debug_keyboard=true;
   //debug_mouse=true;
+}
+
+unsigned char layer = 0;
+const unsigned char MAX_LAYERS = 3;
+
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+      if (!clockwise && layer < MAX_LAYERS-1) {
+        layer++;
+      } else if (clockwise && layer > 0){
+        layer--;
+      }
+      layer_move(layer);
+    }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  if(layer_state_is(0)){oled_write_P(PSTR("Layer0: On\n"), false);};
+  if(layer_state_is(1)){oled_write_P(PSTR("Layer1: On\n"), false);};
+  if(layer_state_is(2)){oled_write_P(PSTR("Layer2: On\n"), false);};
+  return state;
 }
