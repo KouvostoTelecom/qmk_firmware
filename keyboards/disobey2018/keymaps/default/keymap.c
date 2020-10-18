@@ -33,7 +33,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 void oled_task_user(void) {
   xprintf("🍆");
-  oled_write_P(PSTR("RUB HEIKKI\n"), false);
+  oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
+  oled_write_P(PSTR("\nHave you considered\ntrying HARDER?"), false);
 }
 #endif
 
