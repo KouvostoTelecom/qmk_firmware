@@ -16,6 +16,9 @@
 #include QMK_KEYBOARD_H
 #include "oled_driver.h"
 #include <print.h>
+#ifdef OLED_DRIVER_ENABLE
+#  include <../../oled_utils.c>
+#endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
@@ -46,21 +49,20 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_0;
 }
 
+
+static uint16_t key_timer_from_boot;
 void oled_task_user(void) {
-  xprintf("🍆");
-  oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
-  oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
+  if(timer_elapsed(key_timer_from_boot) > 3000) {
+    oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
+    oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
+  } else  {
+    render_qmk_logo();
+  }
 }
 #endif
 
 void keyboard_post_init_user(void) {
-  wait_ms(2000);
-  xprintf("heikki");
-  // Customise these values to desired behaviour
-  debug_enable=true;
-  debug_matrix=true;
-  //debug_keyboard=true;
-  //debug_mouse=true;
+  key_timer_from_boot = timer_read();
 }
 
 unsigned char layer = 0;
