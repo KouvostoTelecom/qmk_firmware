@@ -78,7 +78,7 @@ void oled_task_user(void) {
 }
 #endif
 
-void keyboard_pre_init_user(void) {
+void keyboard_post_init_kb(void) {
   key_timer_from_boot = timer_read();
 }
 
