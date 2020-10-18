@@ -51,10 +51,27 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 
 static uint16_t key_timer_from_boot;
+
 void oled_task_user(void) {
   if(timer_elapsed(key_timer_from_boot) > 3000) {
     oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
     oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
+    switch (get_highest_layer(layer_state)) {
+      case 0:
+        oled_write_P(PSTR("Layer: 0\n"), false);
+        break;
+      case 1:
+        oled_write_P(PSTR("Layer: 1\n"), false);
+        break;
+      case 2:
+        oled_write_P(PSTR("Layer: 2\n"), false);
+        break;
+      case 3:
+        oled_write_P(PSTR("Layer: 3\n"), false);
+        break;
+      default:
+        oled_write_P(PSTR("Layer: Unknown\n"), false);
+    }
   } else  {
     render_qmk_logo();
   }
@@ -77,24 +94,4 @@ void encoder_update_user(uint8_t index, bool clockwise) {
       }
       layer_move(layer);
     }
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-  switch (get_highest_layer(state)) {
-    case 0:
-      oled_write_P(PSTR("Layer: 0\n"), false);
-      break;
-    case 1:
-      oled_write_P(PSTR("Layer: 1\n"), false);
-      break;
-    case 2:
-      oled_write_P(PSTR("Layer: 2\n"), false);
-      break;
-    case 3:
-      oled_write_P(PSTR("Layer: 3\n"), false);
-      break;
-    default:
-      oled_write_P(PSTR("Layer: Unknown\n"), false);
-  }
-  return state;
 }
