@@ -34,6 +34,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_C,       KC_D, KC_E,       KC_F,
 	      KC_G,             KC_H
    ),
+   [3] = LAYOUT(
+	      KC_W,             KC_T, 
+	KC_A,       KC_D, KC_F,       KC_H,
+	      KC_S,             KC_G
    )
 };
 
@@ -60,7 +64,7 @@ void keyboard_post_init_user(void) {
 }
 
 unsigned char layer = 0;
-const unsigned char MAX_LAYERS = 3;
+const unsigned char MAX_LAYERS = 4;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
@@ -83,6 +87,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       break;
     case 2:
       oled_write_P(PSTR("Layer: 2\n"), false);
+      break;
+    case 3:
+      oled_write_P(PSTR("Layer: 3\n"), false);
       break;
     default:
       oled_write_P(PSTR("Layer: Unknown\n"), false);
