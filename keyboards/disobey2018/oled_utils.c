@@ -8,6 +8,10 @@ void render_qmk_logo(void) {
   };
 
   oled_write_P(qmk_logo, false);
+  oled_write_P(PSTR("\n"), false);
+  oled_write_P(PSTR("\n"), false);
+  oled_write_P(PSTR("\n"), false);
+  oled_write_P(PSTR("\n"), false);
 }
 
 void render_kt_logo(void) {

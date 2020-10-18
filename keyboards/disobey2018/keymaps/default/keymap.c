@@ -71,18 +71,20 @@ void render_normal_state(void) {
 }
 
 static uint16_t key_timer_from_boot;
+static bool boot_logo_shown = false;
 
 void oled_task_user(void) {
-  if(timer_elapsed(key_timer_from_boot) > 3000) {
-    render_normal_state();
-  } else  {
+  if(timer_elapsed(key_timer_from_boot) < 3000 && !boot_logo_shown) {
     render_qmk_logo();
+  } else  {
+    boot_logo_shown = true;
+    render_normal_state();
   }
 }
 
 #endif
 
-void keyboard_post_init_kb(void) {
+void keyboard_post_init_quantum(void) {
   key_timer_from_boot = timer_read();
 }
 
