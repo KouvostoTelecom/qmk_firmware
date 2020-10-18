@@ -150,3 +150,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define I2C1_SDA_BANK GPIOB
 #define I2C1_SCL 8
 #define I2C1_SDA 9
+#define I2C1_SCL_PAL_MODE 1
+#define I2C1_SDA_PAL_MODE 1
