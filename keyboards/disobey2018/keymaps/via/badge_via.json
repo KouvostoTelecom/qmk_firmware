@@ -1,0 +1,17 @@
+{
+    "name": "Disobey 2018 badge",
+    "vendorId": "0xDEAD",
+    "productId": "0xFACE",
+    "lighting": "none",
+    "matrix": {
+        "rows": 3,
+        "cols": 8
+    },
+    "layouts": {
+        "keymap": [
+            [{"x":1},"0,1",{"x":2.75},"0,4"],
+            ["1,0",{"x":1},"1,2",{"x":0.75},"1,3",{"x":1},"1,5"],
+            [{"x":1},"2,1",{"x":2.75},"2,4"]
+        ]
+    }
+}

@@ -23,7 +23,7 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 /*	----  ----  ----  ----  ----  ----*/
-	      RESET,             LT(1, KC_1), 
+	      KC_0,             KC_1, 
 	KC_2,       KC_3, KC_4,       KC_5,
 	      KC_6,             KC_7
    ),
@@ -49,119 +49,21 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_0;
 }
 
-void keyboard_pre_init_user(void) {
-  // Call the keyboard pre init code.
-  // Set our LED pins as output
-  setPinOutput(A7);
-  setPinOutput(B4);
-  setPinOutput(B15);
-  setPinOutput(A10);
-  setPinOutput(A4);
-  setPinOutput(A8);
-  setPinOutput(A15);
-  setPinOutput(A9);
-  setPinOutput(A3);
-  setPinOutput(B9);
-  setPinOutput(A2);
-  setPinOutput(B10);
-  setPinOutput(B8);
-  setPinOutput(B0);
-
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-}
-
 void render_normal_state(void) {
   oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
   oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
   switch (get_highest_layer(layer_state)) {
     case 0:
       oled_write_P(PSTR("Layer: 0\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A7);
-  writePinHigh(B0);
       break;
     case 1:
       oled_write_P(PSTR("Layer: 1\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A4);
-  writePinHigh(B10);
       break;
     case 2:
       oled_write_P(PSTR("Layer: 2\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A3);
-  writePinHigh(A8);
       break;
     case 3:
       oled_write_P(PSTR("Layer: 3\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A10);
-  writePinHigh(A15);
       break;
     default:
       oled_write_P(PSTR("Layer: Unknown\n"), false);
