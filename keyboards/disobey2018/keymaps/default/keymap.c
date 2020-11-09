@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 /*	----  ----  ----  ----  ----  ----*/
 	      RESET,             LT(1, KC_1), 
-	KC_2,       KC_3, KC_4,       KC_5,
+	MO(1),       KC_3, KC_4,       KC_5,
 	      KC_6,             KC_7
    ),
    [1] = LAYOUT(
@@ -89,77 +89,24 @@ void render_normal_state(void) {
   switch (get_highest_layer(layer_state)) {
     case 0:
       oled_write_P(PSTR("Layer: 0\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
+
   writePinHigh(A7);
   writePinHigh(B0);
       break;
     case 1:
       oled_write_P(PSTR("Layer: 1\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
+
   writePinHigh(A4);
   writePinHigh(B10);
       break;
     case 2:
       oled_write_P(PSTR("Layer: 2\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
+
   writePinHigh(A3);
   writePinHigh(A8);
       break;
     case 3:
       oled_write_P(PSTR("Layer: 3\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
   writePinHigh(A10);
   writePinHigh(A15);
       break;
@@ -202,6 +149,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         layer--;
       }
       layer_move(layer);
+      clear_leds();
     }
 }
 

@@ -37,3 +37,20 @@ void render_empty(void) {
     };
     oled_write_raw_P(raw_logo, sizeof(raw_logo));
 }
+
+void clear_leds(void) {
+  writePinLow(B4);
+  writePinLow(B15);
+  writePinLow(A10);
+  writePinLow(A4);
+  writePinLow(A8);
+  writePinLow(A15);
+  writePinLow(A9);
+  writePinLow(A3);
+  writePinLow(B9);
+  writePinLow(A2);
+  writePinLow(B10);
+  writePinLow(B8);
+  writePinLow(A7);
+  writePinLow(B0);
+}

@@ -16,6 +16,7 @@
 #include QMK_KEYBOARD_H
 #include "oled_driver.h"
 #include <print.h>
+#include <sendstring_finnish.h>
 #ifdef OLED_DRIVER_ENABLE
 #  include <../../oled_utils.c>
 #endif
@@ -67,20 +68,6 @@ void keyboard_pre_init_user(void) {
   setPinOutput(B8);
   setPinOutput(B0);
 
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
 }
 
 void render_normal_state(void) {
@@ -89,79 +76,23 @@ void render_normal_state(void) {
   switch (get_highest_layer(layer_state)) {
     case 0:
       oled_write_P(PSTR("Layer: 0\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A7);
-  writePinHigh(B0);
+      writePinHigh(A7);
+      writePinHigh(B0);
       break;
     case 1:
       oled_write_P(PSTR("Layer: 1\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A4);
-  writePinHigh(B10);
+      writePinHigh(A4);
+      writePinHigh(B10);
       break;
     case 2:
       oled_write_P(PSTR("Layer: 2\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A3);
-  writePinHigh(A8);
+      writePinHigh(A3);
+      writePinHigh(A8);
       break;
     case 3:
       oled_write_P(PSTR("Layer: 3\n"), false);
-  writePinLow(B4);
-  writePinLow(B15);
-  writePinLow(A10);
-  writePinLow(A4);
-  writePinLow(A8);
-  writePinLow(A15);
-  writePinLow(A9);
-  writePinLow(A3);
-  writePinLow(B9);
-  writePinLow(A2);
-  writePinLow(B10);
-  writePinLow(B8);
-  writePinLow(A7);
-  writePinLow(B0);
-  writePinHigh(A10);
-  writePinHigh(A15);
+      writePinHigh(A10);
+      writePinHigh(A15);
       break;
     default:
       oled_write_P(PSTR("Layer: Unknown\n"), false);
@@ -202,6 +133,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         layer--;
       }
       layer_move(layer);
+      clear_leds();
     }
 }
 
