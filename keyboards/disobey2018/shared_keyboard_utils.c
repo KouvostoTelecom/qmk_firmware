@@ -33,3 +33,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	      KC_D,             KC_B
    ),
 };
+
+void render_layer_ui(uint8_t layer) {
+  switch(layer) {
+    case 0:
+      oled_write_P(PSTR("1: 0\n"), false);
+      oled_write_P(PSTR("2: 1\n"), false);
+      oled_write_P(PSTR("3: 2\n"), false);
+      oled_write_P(PSTR("4: 3\n"), false);
+      oled_write_P(PSTR("5: 4\n"), false);
+      oled_write_P(PSTR("6: 5\n"), false);
+      oled_write_P(PSTR("7: 6\n"), false);
+      oled_write_P(PSTR("8: 7\n"), false);
+      break;
+    case 1:
+      oled_write_P(PSTR("1: u\n"), false);
+      oled_write_P(PSTR("2: x\n"), false);
+      oled_write_P(PSTR("3: l\n"), false);
+      oled_write_P(PSTR("4: r\n"), false);
+      oled_write_P(PSTR("5: y\n"), false);
+      oled_write_P(PSTR("6: a\n"), false);
+      oled_write_P(PSTR("7: d\n"), false);
+      oled_write_P(PSTR("8: b\n"), false);
+      break;
+  }
+}

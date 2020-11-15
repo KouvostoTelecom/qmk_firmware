@@ -63,18 +63,10 @@ void keyboard_pre_init_user(void) {
 }
 
 void render_normal_state(void) {
-  oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
-  oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
   uint8_t selected_layer = get_highest_layer(layer_state);
-  char layer_str[10];
 
   set_leds_for_layer(selected_layer);
-  sprintf(layer_str, "%d", selected_layer);
-  oled_write_P(PSTR("Layer: "), false);
-  oled_write_P(PSTR(layer_str), false);
-  oled_write_P(PSTR("\n"), false);
-  oled_write_P(PSTR("\n"), false);
-  oled_write_P(PSTR("\n"), false);
+  render_layer_ui(selected_layer);
 }
 
 static uint16_t key_timer_from_boot;
