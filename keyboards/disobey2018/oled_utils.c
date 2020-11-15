@@ -54,3 +54,24 @@ void clear_leds(void) {
   writePinLow(A7);
   writePinLow(B0);
 }
+
+void setLedsForLayer(uint8_t laayer) {
+  switch (get_highest_layer(layer_state)) {
+    case 0:
+      writePinHigh(A7);
+      writePinHigh(B0);
+      break;
+    case 1:
+      writePinHigh(A4);
+      writePinHigh(B10);
+      break;
+    case 2:
+      writePinHigh(A3);
+      writePinHigh(A8);
+      break;
+    case 3:
+      writePinHigh(A10);
+      writePinHigh(A15);
+      break;
+  }
+}

@@ -64,33 +64,14 @@ void keyboard_pre_init_user(void) {
 void render_normal_state(void) {
   oled_write_P(PSTR("From: KouvostoTelecomTo: Hackers\n"), false);
   oled_write_P(PSTR("\nHave you considered\ntrying HARDER?\n"), false);
-  switch (get_highest_layer(layer_state)) {
-    case 0:
-      oled_write_P(PSTR("Layer: 0\n"), false);
+  uint8_t selected_layer = get_highest_layer(layer_state);
+  char layer_str[10];
 
-  writePinHigh(A7);
-  writePinHigh(B0);
-      break;
-    case 1:
-      oled_write_P(PSTR("Layer: 1\n"), false);
-
-  writePinHigh(A4);
-  writePinHigh(B10);
-      break;
-    case 2:
-      oled_write_P(PSTR("Layer: 2\n"), false);
-
-  writePinHigh(A3);
-  writePinHigh(A8);
-      break;
-    case 3:
-      oled_write_P(PSTR("Layer: 3\n"), false);
-  writePinHigh(A10);
-  writePinHigh(A15);
-      break;
-    default:
-      oled_write_P(PSTR("Layer: Unknown\n"), false);
-  }
+  setLedsForLayer(selected_layer);
+  sprintf(layer_str, "%d", selected_layer);
+  oled_write_P(PSTR("Layer: "), false);
+  oled_write_P(PSTR(layer_str), false);
+  oled_write_P(PSTR("\n"), false);
   oled_write_P(PSTR("\n"), false);
   oled_write_P(PSTR("\n"), false);
 }
