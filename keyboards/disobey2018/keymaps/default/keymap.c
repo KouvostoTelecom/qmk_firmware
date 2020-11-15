@@ -17,6 +17,7 @@
 #include "oled_driver.h"
 #include <print.h>
 #include <../../shared_keyboard_utils.c>
+#  include <../../led_utils.c>
 #ifdef OLED_DRIVER_ENABLE
 #  include <../../oled_utils.c>
 #endif
@@ -67,7 +68,7 @@ void render_normal_state(void) {
   uint8_t selected_layer = get_highest_layer(layer_state);
   char layer_str[10];
 
-  setLedsForLayer(selected_layer);
+  set_leds_for_layer(selected_layer);
   sprintf(layer_str, "%d", selected_layer);
   oled_write_P(PSTR("Layer: "), false);
   oled_write_P(PSTR(layer_str), false);
