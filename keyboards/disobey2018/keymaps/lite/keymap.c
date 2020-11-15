@@ -16,3 +16,8 @@
 #include QMK_KEYBOARD_H
 
 #include <../../shared_keyboard_utils.c>
+#include <../../led_utils.c>
+
+void oled_task_user(void) {
+  set_leds_for_layer(get_highest_layer(layer_state));
+}

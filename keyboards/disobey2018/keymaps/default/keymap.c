@@ -17,13 +17,11 @@
 #include "oled_driver.h"
 #include <print.h>
 #include <../../shared_keyboard_utils.c>
-#  include <../../led_utils.c>
-#ifdef OLED_DRIVER_ENABLE
-#  include <../../oled_utils.c>
-#endif
+#include <../../led_utils.c>
+#include <../../oled_utils.c>
 
 
-#ifdef OLED_DRIVER_ENABLE
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_0;
 }
@@ -62,13 +60,6 @@ void keyboard_pre_init_user(void) {
   writePinLow(B0);
 }
 
-void render_normal_state(void) {
-  uint8_t selected_layer = get_highest_layer(layer_state);
-
-  set_leds_for_layer(selected_layer);
-  render_layer_ui(selected_layer);
-}
-
 static uint16_t key_timer_from_boot;
 static bool boot_logo_shown = false;
 
@@ -80,11 +71,11 @@ void oled_task_user(void) {
       render_empty();
       boot_logo_shown = true;
     }
-    render_normal_state();
+    uint8_t selected_layer = get_highest_layer(layer_state);
+    set_leds_for_layer(selected_layer);
+    render_layer_ui(selected_layer);
   }
 }
-
-#endif
 
 void keyboard_post_init_quantum(void) {
   key_timer_from_boot = timer_read();
