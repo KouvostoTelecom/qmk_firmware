@@ -117,7 +117,6 @@ void keyboard_post_init_quantum(void) {
 }
 
 unsigned char layer = 0;
-const unsigned char MAX_LAYERS = 4;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
