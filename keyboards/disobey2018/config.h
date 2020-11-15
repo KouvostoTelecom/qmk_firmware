@@ -35,6 +35,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	{B11, NO_PIN, B13, B3, NO_PIN, B14}, \
 	{NO_PIN, B12, NO_PIN, NO_PIN, B1, NO_PIN} \
 }
+//Bootmagic, works so that when you press UP while connecting the USB, it will clear EEPROM and go to DFU mode for flashing
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 1
+
 /*
  * Keyboard Matrix Assignments
  *
