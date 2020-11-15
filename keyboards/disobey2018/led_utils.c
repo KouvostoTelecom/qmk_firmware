@@ -17,23 +17,24 @@ void clear_leds(void) {
   writePinLow(B0);
 }
 
-void set_leds_for_layer(uint8_t laayer) {
-  switch (get_highest_layer(layer_state)) {
+void set_leds_for_layer(uint8_t layer) {
+  switch (layer) {
+    case 7:
+      writePinHigh(A15);
+    case 6:
+      writePinHigh(A10);
+    case 5:
+      writePinHigh(A8);
+    case 4:
+      writePinHigh(A3);
+    case 3:
+      writePinHigh(B10);
+    case 2:
+      writePinHigh(A4);
+    case 1:
+      writePinHigh(B0);
     case 0:
       writePinHigh(A7);
-      writePinHigh(B0);
-      break;
-    case 1:
-      writePinHigh(A4);
-      writePinHigh(B10);
-      break;
-    case 2:
-      writePinHigh(A3);
-      writePinHigh(A8);
-      break;
-    case 3:
-      writePinHigh(A10);
-      writePinHigh(A15);
       break;
   }
 }
