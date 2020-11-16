@@ -17,6 +17,7 @@
 #include "oled_driver.h"
 #include <print.h>
 #include <sendstring_finnish.h>
+#include <../../led_utils.c>
 #ifdef OLED_DRIVER_ENABLE
 #  include <../../oled_utils.c>
 #endif
