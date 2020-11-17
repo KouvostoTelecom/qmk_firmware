@@ -19,7 +19,7 @@
 #include <../../shared_keyboard_utils.c>
 #include <../../led_utils.c>
 #include <../../oled_utils.c>
-
+#include <sendstring_finnish.h>
 
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
